@@ -20,6 +20,11 @@ const TARGETS = [
   { name: 'Antigravity',   dir: '.antigravity/skills',       detect: '.antigravity' },
   { name: 'VS Code',       dir: '.github/superpowers',       detect: '.github/copilot-instructions.md' },
   { name: 'OpenClaw',      dir: 'skills',                     detect: '.openclaw' },
+  { name: 'Windsurf',      dir: '.windsurf/skills',          detect: '.windsurf' },
+  { name: 'Gemini CLI',    dir: '.gemini/skills',            detect: 'GEMINI.md' },
+  { name: 'Aider',         dir: '.aider/skills',             detect: '.aider' },
+  { name: 'OpenCode',      dir: '.opencode/skills',          detect: '.opencode' },
+  { name: 'Qwen Code',     dir: '.qwen/skills',             detect: '.qwen' },
 ];
 
 function countDirs(dir) {
@@ -39,6 +44,7 @@ function showHelp() {
   说明：
     自动检测当前项目使用的 AI 编程工具：
     Claude Code / Cursor / Codex / Kiro / DeerFlow / Trae / Antigravity / VS Code / OpenClaw
+    Windsurf / Gemini CLI / Aider / OpenCode / Qwen Code
     将 ${countDirs(SKILLS_SRC)} 个 skills 安装到对应目录。
     Claude Code 还会额外安装 agents 到 .claude/agents/。
     如果未检测到任何工具，默认安装到 .claude/skills/ 和 .claude/agents/。

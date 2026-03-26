@@ -77,3 +77,6 @@ jobs:
             }
             console.log('package.json OK:', pkg.name, 'v' + pkg.version);
           "
+
+      - name: Validate install script
+        run: node bin/superpowers-zh.js --help
