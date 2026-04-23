@@ -40,6 +40,8 @@ HEAD_SHA=$(git rev-parse HEAD)
 - `{HEAD_SHA}` - 结束提交
 - `{DESCRIPTION}` - 简要说明
 
+**审查范围：** 代码质量审查聚焦于构建验证——确认 UT 通过和编译成功。不再检查代码风格、架构、安全性等。
+
 **3. 处理反馈：**
 - Critical 问题立即修复
 - Important 问题在继续之前修复

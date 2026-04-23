@@ -25,11 +25,13 @@ description: "在任何创造性工作之前必须使用此技能——创建功
 2. **提供视觉伴侣**（如果主题涉及视觉问题）— 这是一条独立的消息，不要与澄清问题合并。参见下方的"视觉伴侣"部分。
 3. **提出澄清问题** — 每次一个，了解目的/约束/成功标准
 4. **提出 2-3 种方案** — 附带权衡分析和你的推荐
-5. **展示设计** — 按复杂度分节展示，每节展示后获得用户批准
-6. **编写设计文档** — 保存到 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` 并 commit
-7. **规格自检** — 快速内联检查占位符、矛盾、模糊性、范围（详见下方）
-8. **用户审查书面规格** — 在继续之前请用户审查规格文件
-9. **过渡到实现** — 调用 writing-plans 技能创建实现计划
+5. **展示规格说明（SPEC）** — 逐节展示 SPEC 内容（目的、需求、场景、约束、验收标准），每节获得用户批准
+6. **编写规格文档** — 保存 SPEC 到 `docs/superpowers/specs/YYYY-MM-DD-<topic>-spec.md` 并 commit
+7. **展示设计（DESIGN）** — 基于 SPEC 逐节展示技术设计方案，每节获得用户批准
+8. **编写设计文档** — 保存 DESIGN 到 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` 并 commit
+9. **规格自检** — 快速内联检查占位符、矛盾、模糊性、范围、SPEC 与 DESIGN 一致性（详见下方）
+10. **用户审查书面规格** — 在继续之前请用户审查 SPEC 和 DESIGN 文件
+11. **过渡到实现** — 调用 writing-plans 技能创建实现计划
 
 ## 流程图
 
@@ -40,9 +42,12 @@ digraph brainstorming {
     "提供视觉伴侣\n（独立消息，不含其他内容）" [shape=box];
     "提出澄清问题" [shape=box];
     "提出 2-3 种方案" [shape=box];
-    "分节展示设计" [shape=box];
-    "用户批准设计?" [shape=diamond];
-    "编写设计文档" [shape=box];
+    "分节展示 SPEC" [shape=box];
+    "用户批准 SPEC?" [shape=diamond];
+    "编写 SPEC 文档" [shape=box];
+    "分节展示 DESIGN" [shape=box];
+    "用户批准 DESIGN?" [shape=diamond];
+    "编写 DESIGN 文档" [shape=box];
     "规格自检\n（内联修复）" [shape=box];
     "用户审查规格?" [shape=diamond];
     "调用 writing-plans 技能" [shape=doublecircle];
@@ -52,18 +57,22 @@ digraph brainstorming {
     "有视觉相关问题?" -> "提出澄清问题" [label="否"];
     "提供视觉伴侣\n（独立消息，不含其他内容）" -> "提出澄清问题";
     "提出澄清问题" -> "提出 2-3 种方案";
-    "提出 2-3 种方案" -> "分节展示设计";
-    "分节展示设计" -> "用户批准设计?";
-    "用户批准设计?" -> "分节展示设计" [label="否，修改"];
-    "用户批准设计?" -> "编写设计文档" [label="是"];
-    "编写设计文档" -> "规格自检\n（内联修复）";
+    "提出 2-3 种方案" -> "分节展示 SPEC";
+    "分节展示 SPEC" -> "用户批准 SPEC?";
+    "用户批准 SPEC?" -> "分节展示 SPEC" [label="否，修改"];
+    "用户批准 SPEC?" -> "编写 SPEC 文档" [label="是"];
+    "编写 SPEC 文档" -> "分节展示 DESIGN";
+    "分节展示 DESIGN" -> "用户批准 DESIGN?";
+    "用户批准 DESIGN?" -> "分节展示 DESIGN" [label="否，修改"];
+    "用户批准 DESIGN?" -> "编写 DESIGN 文档" [label="是"];
+    "编写 DESIGN 文档" -> "规格自检\n（内联修复）";
     "规格自检\n（内联修复）" -> "用户审查规格?";
-    "用户审查规格?" -> "编写设计文档" [label="要求修改"];
+    "用户审查规格?" -> "编写 DESIGN 文档" [label="要求修改"];
     "用户审查规格?" -> "调用 writing-plans 技能" [label="批准"];
 }
 ```
 
-**终止状态是调用 writing-plans。** 不要调用 frontend-design、mcp-builder 或任何其他实现技能。头脑风暴之后你唯一要调用的技能是 writing-plans。
+**终止状态是调用 writing-plans。** 不要调用任何其他实现技能。头脑风暴之后你唯一要调用的技能是 writing-plans。
 
 ## 流程详述
 
@@ -83,9 +92,21 @@ digraph brainstorming {
 - 以对话的方式展示选项，附上你的推荐和理由
 - 先展示你推荐的方案并解释原因
 
-**展示设计：**
+**展示规格说明（SPEC）：**
 
-- 一旦你认为理解了要构建的内容，就展示设计
+- 一旦你认为理解了要构建的内容，先展示规格说明
+- SPEC 使用 RFC 2119 关键词（SHALL/MUST/SHOULD）和 GIVEN/WHEN/THEN 场景格式
+- SPEC 结构：
+  - 目的：一段话描述功能要解决的问题
+  - 需求：每个需求包含名称、描述（SHALL/MUST/SHOULD）和多个场景（GIVEN/WHEN/THEN）
+  - 约束：非功能性约束（性能、安全、兼容性等）
+  - 验收标准：可检查的完成条件清单
+- 每个部分展示后询问是否正确
+- 获得用户对 SPEC 的完全批准后，再进入 DESIGN 阶段
+
+**展示设计（DESIGN）：**
+
+- 基于已批准的 SPEC，展示技术设计方案
 - 每个部分的篇幅与其复杂度匹配：简单的几句话，复杂的最多 200-300 字
 - 每个部分展示后询问是否正确
 - 涵盖：架构、组件、数据流、错误处理、测试
@@ -108,7 +129,8 @@ digraph brainstorming {
 
 **文档：**
 
-- 将验证通过的设计（规格说明）写入 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
+- 将验证通过的规格说明写入 `docs/superpowers/specs/YYYY-MM-DD-<topic>-spec.md`
+- 将验证通过的设计文档写入 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
   - （用户对规格位置的偏好优先于此默认值）
 - 如果可用，使用 elements-of-style:writing-clearly-and-concisely 技能
 - 将设计文档 commit 到 git
@@ -120,13 +142,14 @@ digraph brainstorming {
 2. **内部一致性：** 各章节之间有矛盾吗？架构和功能描述匹配吗？
 3. **范围检查：** 这是否聚焦到可以用一个实现计划覆盖，还是需要进一步拆分？
 4. **模糊性检查：** 有没有需求可以被两种方式理解？如果有，选择一种并明确写出来。
+5. **SPEC-DESIGN 一致性：** DESIGN 中的技术方案是否覆盖了 SPEC 中的所有需求？是否有 SPEC 中未提及的设计决策？
 
 发现问题就直接内联修复。无需重新审查——修好继续推进。
 
 **用户审查关卡：**
 规格自检完成后，请用户在继续之前审查书面规格：
 
-> "规格已编写并 commit 到 `<path>`。请审查一下，如果在我们开始编写实现计划之前你想做任何修改，请告诉我。"
+> "SPEC 已写入 `<spec-path>`，DESIGN 已写入 `<design-path>`。请审查两个文件，如果在我们开始编写实现计划之前你想做任何修改，请告诉我。"
 
 等待用户回复。如果他们要求修改，做出修改并重新运行规格自检。只有在用户批准后才继续。
 
