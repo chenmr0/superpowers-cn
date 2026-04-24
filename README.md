@@ -2,9 +2,9 @@
 
 🌐 **简体中文** | [English (upstream)](https://github.com/obra/superpowers)
 
-> 🦸 **superpowers（159k+ ⭐）完整汉化 + 6 个中国原创 skills** — 让 Claude Code / Copilot CLI / Hermes Agent / Cursor / Windsurf / Kiro / Gemini CLI 等 **17 款 AI 编程工具**真正会干活。从头脑风暴到代码审查，从 TDD 到调试，每个 skill 都是经过实战验证的工作方法论。
+> 🦸 **superpowers（159k+ ⭐）完整汉化** — 让 Claude Code / Copilot CLI / Hermes Agent / Cursor / Windsurf / Kiro / Gemini CLI 等 **17 款 AI 编程工具**真正会干活。从头脑风暴到代码审查，从 TDD 到调试，每个 skill 都是经过实战验证的工作方法论。
 
-Chinese community edition of [superpowers](https://github.com/obra/superpowers) — 20 skills across 16 AI coding tools, including full translations and China-specific development skills.
+Chinese community edition of [superpowers](https://github.com/obra/superpowers) — 14 skills across 16 AI coding tools, including full translations.
 
 <!-- 效果对比 -->
 <table>
@@ -41,9 +41,9 @@ AI：在开始实现之前，我需要了解几个关键问题：
 
 ### 📊 项目规模
 
-| 📦 翻译 Skills | 🇨🇳 中国特色 Skills | 🤖 支持工具 |
-|:---:|:---:|:---:|
-| **14** | **6** | **Claude Code / Copilot CLI / Hermes Agent / Cursor / Windsurf / Kiro / Gemini CLI / Codex / Aider / Trae / VS Code (Copilot) / DeerFlow / OpenCode / OpenClaw / Qwen Code / Antigravity / Claw Code** |
+| 📦 Skills | 🤖 支持工具 |
+|:---:|:---:|
+| **14** | **Claude Code / Copilot CLI / Hermes Agent / Cursor / Windsurf / Kiro / Gemini CLI / Codex / Aider / Trae / VS Code (Copilot) / DeerFlow / OpenCode / OpenClaw / Qwen Code / Antigravity / Claw Code** |
 
 ---
 
@@ -51,30 +51,26 @@ AI：在开始实现之前，我需要了解几个关键问题：
 
 [superpowers](https://github.com/obra/superpowers) 是目前最火的 AI 编程 skills 框架（159k+ stars），为 AI 编程工具提供**系统化的工作方法论**。
 
-**superpowers-zh** 在完整翻译的基础上，新增了面向中国开发者的特色 skills。
+**superpowers-zh** 在完整翻译的基础上，适配了更多 AI 编程工具。
 
 ### 🆚 与英文上游的区别（老被问，一次说清）
 
 | 维度 | superpowers（英文上游） | superpowers-zh（中文增强版） |
 |------|----------------------|---------------------------|
 | ⭐ Star 数 | 159k+ | — |
-| 📦 Skills 总数 | 14 | **20**（14 翻译 + 6 国产原创） |
+| 📦 Skills 总数 | 14 | **14**（完整翻译） |
 | 🌐 语言 | 英文 | 中文（技术术语保留英文） |
 | 🤖 **支持工具** | **6 款**：Claude Code / Cursor / Codex / OpenCode / Copilot CLI / Gemini CLI | **17 款**：上述 6 款 + Hermes Agent / Trae / Kiro / Qwen Code（通义灵码）/ OpenClaw / Claw Code / Antigravity / DeerFlow / VS Code / Windsurf / Aider |
 | ⚡ **安装方式** | 按工具分别装（每款一条不同的 plugin marketplace 命令） | **`npx superpowers-zh` 一条命令自动识别项目里的工具并安装**；识别不出可 `--tool <name>` 显式指定 |
 | 🇨🇳 Git 平台 | GitHub 为主 | GitHub + Gitee + Coding + 极狐 GitLab + **CNB（腾讯云原生构建）** |
 | 🇨🇳 CI/CD 示例 | GitHub Actions | GitHub Actions + Gitee Go + Coding CI + 极狐 CI + `.cnb.yml` |
 | 🇨🇳 代码审查风格 | 西方直接风格 | 适配国内团队沟通文化 |
-| 🇨🇳 Git 提交规范 | 无 | Conventional Commits 中文适配 |
-| 🇨🇳 中文文档规范 | 无 | 中文排版 + 中英混排规则 + 告别机翻味 |
-| ➕ MCP 服务器构建 | 无 | 独立 `mcp-builder` skill |
-| ➕ 工作流执行器 | 无 | 独立 `workflow-runner` skill（多角色 YAML 编排） |
 | 🔄 版本跟进 | 独立迭代 | **同步上游 + 国产增量叠加** |
 | 🤝 接受新 skill PR | 一般不接受（原文：*"we don't generally accept contributions of new skills"*） | 欢迎 PR（中国开发者痛点优先） |
 | 💬 社区 | Discord | 微信公众号「AI不止语」+ 微信群 + QQ 群 |
 | 📜 License | MIT | MIT |
 
-**一句话总结：** 英文上游 = 方法论内核；中文增强版 = 方法论内核 **+** 17 款工具一键适配 **+** 国内 Git/CI 生态 **+** 中文化表达习惯。
+**一句话总结：** 英文上游 = 方法论内核；中文增强版 = 方法论内核 **+** 17 款工具一键适配 **+** 中文化表达习惯。
 
 ### 🤖 支持 17 款主流 AI 编程工具
 
@@ -98,7 +94,7 @@ AI：在开始实现之前，我需要了解几个关键问题：
 | [Antigravity](https://github.com/anthropics/antigravity) | CLI | `npx superpowers-zh` | `.antigravity/skills/` |
 | [Claw Code](https://github.com/ultraworkers/claw-code) | CLI (Rust) | `npx superpowers-zh` | `.claw/skills/` |
 
-> 运行 `npx superpowers-zh` 会自动检测你项目中使用的工具，将 20 个 skills 安装到正确位置。
+> 运行 `npx superpowers-zh` 会自动检测你项目中使用的工具，将 14 个 skills 安装到正确位置。
 
 ### 翻译的 Skills（14 个）
 
@@ -118,17 +114,6 @@ AI：在开始实现之前，我需要了解几个关键问题：
 | **完成开发分支** (finishing-a-development-branch) | 合并/PR/保留/丢弃四选一 |
 | **编写 Skills** (writing-skills) | 创建新 skill 的方法论 |
 | **使用 Superpowers** (using-superpowers) | 元技能：如何调用和优先使用 skills |
-
-### 🇨🇳 中国特色 Skills（6 个）
-
-| Skill | 用途 | 上游有吗？ |
-|-------|------|:---:|
-| **中文代码审查** (chinese-code-review) | 符合国内团队文化的代码审查规范 | 无 |
-| **中文 Git 工作流** (chinese-git-workflow) | 适配 Gitee/Coding/极狐 GitLab | 无 |
-| **中文技术文档** (chinese-documentation) | 中文排版规范、中英混排、告别机翻味 | 无 |
-| **中文提交规范** (chinese-commit-conventions) | 适配国内团队的 commit message 规范 | 无 |
-| **MCP 服务器构建** (mcp-builder) | 构建生产级 MCP 工具，扩展 AI 能力边界 | 无 |
-| **工作流执行器** (workflow-runner) | 在 AI 工具内运行多角色 YAML 工作流 | 无 |
 
 ---
 
@@ -227,7 +212,7 @@ cp -r superpowers-zh/skills /your/project/.claw/skills       # Claw Code（Rust 
 
 | 项目 | 定位 | 一句话 |
 |------|------|-------|
-| **[superpowers-zh](https://github.com/jnMetaCode/superpowers-zh)**（本项目） ![](https://img.shields.io/github/stars/jnMetaCode/superpowers-zh?style=flat&label=⭐) | 🧠 工作方法论 | 20 个 skills 教 AI 怎么干活（TDD / 调试 / 代码审查等） |
+| **[superpowers-zh](https://github.com/jnMetaCode/superpowers-zh)**（本项目） ![](https://img.shields.io/github/stars/jnMetaCode/superpowers-zh?style=flat&label=⭐) | 🧠 工作方法论 | 14 个 skills 教 AI 怎么干活（TDD / 调试 / 代码审查等） |
 | **[agency-agents-zh](https://github.com/jnMetaCode/agency-agents-zh)** ![](https://img.shields.io/github/stars/jnMetaCode/agency-agents-zh?style=flat&label=⭐) | 🎭 专家角色库 | 211 个**即插即用** AI 专家，含 46 中国原创（小红书 / 抖音 / 飞书 / 钉钉） |
 | **[agency-orchestrator](https://github.com/jnMetaCode/agency-orchestrator)** | 🚀 编排引擎 | 一句话 → 211 专家协作，**几分钟出方案**（9 家 LLM / 6 免费） |
 | **[ai-coding-guide](https://github.com/jnMetaCode/ai-coding-guide)** | 📖 实战教程 | 66 个 Claude Code 技巧 + 9 款工具最佳实践 + 配置模板 |
