@@ -223,7 +223,7 @@ digraph process {
 - 两阶段审查：规格合规性，然后代码质量
 - 审查循环确保修复确实有效
 - 规格合规防止过度/不足构建
-- 代码质量确保实现良好
+- 代码质量确保实现良好，验证编译通过
 
 **成本：**
 - 更多子智能体调用（每个任务需要实现者 + 2 个审查者）
@@ -270,8 +270,9 @@ digraph process {
 - **superpowers:requesting-code-review** - 审查子智能体的代码审查模板
 - **superpowers:finishing-a-development-branch** - 所有任务完成后收尾
 
-**子智能体应使用：**
-- **superpowers:test-driven-development** - 子智能体对每个任务遵循 TDD
+**子智能体步骤执行纪律：**
+- **严格按步骤顺序** - 实现者子智能体必须严格按计划中的步骤顺序执行，不合并、不跳过、不重排
+- **TDD 由计划驱动** - 如果计划中某个任务的步骤要求先写测试再写实现，子智能体必须遵循该顺序。TDD 的可靠性取决于计划中是否包含完整的 TDD 步骤
 
 **替代工作流：**
 - **superpowers:executing-plans** - 用于并行会话而非同会话执行
