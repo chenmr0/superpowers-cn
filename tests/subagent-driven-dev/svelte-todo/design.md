@@ -1,20 +1,45 @@
-# Svelte Todo List - Design
+# Svelte Todo List - 技术设计
 
-## Overview
+> 本文档定义系统如何实现（HOW），基于规格说明中的需求。
 
-A simple todo list application built with Svelte. Supports creating, completing, and deleting todos with localStorage persistence.
+**关联规格：** `spec.md`
 
-## Features
+## Context
 
-- Add new todos
-- Mark todos as complete/incomplete
-- Delete todos
-- Filter by: All / Active / Completed
-- Clear all completed todos
-- Persist to localStorage
-- Show count of remaining items
+构建一个简单的待办事项列表应用，使用 Svelte 框架。需要支持创建、完成、删除待办事项，并提供 localStorage 持久化。
 
-## User Interface
+## Goals / Non-Goals
+
+### Goals
+- 提供简洁的待办事项管理界面
+- 通过 localStorage 实现数据持久化
+- 支持按完成状态筛选
+
+### Non-Goals
+- 不做用户认证/多用户支持
+- 不做云端同步
+- 不做拖拽排序
+
+## Decisions
+
+### 前端框架选择
+- **选择：** 使用 Svelte
+- **理由：** 轻量、响应式、编译时优化
+- **备选方案：** React（更重）、Vanilla JS（手动 DOM 管理繁琐）
+
+### 状态管理
+- **选择：** 使用 Svelte store（writable）
+- **理由：** 内置于 Svelte，无需额外依赖，适合简单应用
+- **备选方案：** Redux（过度工程化）
+
+### 持久化方案
+- **选择：** localStorage
+- **理由：** 无需后端，满足单用户本地需求
+- **备选方案：** IndexedDB（对于简单数据过于复杂）
+
+## Architecture
+
+### 用户界面
 
 ```
 ┌─────────────────────────────────────────┐
@@ -31,7 +56,7 @@ A simple todo list application built with Svelte. Supports creating, completing,
 └─────────────────────────────────────────┘
 ```
 
-## Components
+### 组件结构
 
 ```
 src/
@@ -45,7 +70,7 @@ src/
     storage.ts         # localStorage persistence
 ```
 
-## Data Model
+### 数据模型
 
 ```typescript
 interface Todo {
@@ -57,14 +82,7 @@ interface Todo {
 type Filter = 'all' | 'active' | 'completed';
 ```
 
-## Acceptance Criteria
+## Risks / Trade-offs
 
-1. Can add a todo by typing and pressing Enter or clicking Add
-2. Can toggle todo completion by clicking checkbox
-3. Can delete a todo by clicking X button
-4. Filter buttons show correct subset of todos
-5. "X items left" shows count of incomplete todos
-6. "Clear completed" removes all completed todos
-7. Todos persist across page refresh (localStorage)
-8. Empty state shows helpful message
-9. All tests pass
+- localStorage 容量限制（~5MB）：对于待办事项列表足够 → 无需额外缓解
+- 无云端备份：用户清除浏览器数据会丢失 → Non-Goal，不做云端同步
