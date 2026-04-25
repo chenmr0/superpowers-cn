@@ -51,7 +51,7 @@ digraph process {
     "读取计划，提取所有任务的完整文本，记录上下文，创建 TodoWrite" [shape=box];
     "还有剩余任务?" [shape=diamond];
     "分派最终代码审查子智能体审查整体实现" [shape=box];
-    "使用 superpowers:finishing-a-development-branch" [shape=box style=filled fillcolor=lightgreen];
+    "报告完成，验证测试通过，等待用户指示" [shape=box style=filled fillcolor=lightgreen];
 
     "读取计划，提取所有任务的完整文本，记录上下文，创建 TodoWrite" -> "分派实现子智能体 (./implementer-prompt.md)";
     "分派实现子智能体 (./implementer-prompt.md)" -> "实现子智能体有疑问?";
@@ -70,7 +70,7 @@ digraph process {
     "在 TodoWrite 中标记任务完成" -> "还有剩余任务?";
     "还有剩余任务?" -> "分派实现子智能体 (./implementer-prompt.md)" [label="是"];
     "还有剩余任务?" -> "分派最终代码审查子智能体审查整体实现" [label="否"];
-    "分派最终代码审查子智能体审查整体实现" -> "使用 superpowers:finishing-a-development-branch";
+    "分派最终代码审查子智能体审查整体实现" -> "报告完成，验证测试通过，等待用户指示";
 }
 ```
 
@@ -252,7 +252,6 @@ digraph process {
 **工作流技能：**
 - **superpowers:writing-plans** - 创建本技能执行的计划
 - **superpowers:requesting-code-review** - 审查子智能体的代码审查模板
-- **superpowers:finishing-a-development-branch** - 所有任务完成后收尾
 
 **子智能体步骤执行纪律：**
 - **严格按步骤顺序** - 实现者子智能体必须严格按计划中的步骤顺序执行，不合并、不跳过、不重排
